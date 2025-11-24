@@ -39,7 +39,7 @@ public class TaschenrechnerPruefung extends JFrame {
                 "7", "8", "9", "/",
                 "4", "5", "6", "*",
                 "1", "2", "3", "-",
-                "0", ".", "←", "+"
+                ".", "0", "←", "+"
         };
 
         for (String label : buttons) {
@@ -65,6 +65,12 @@ public class TaschenrechnerPruefung extends JFrame {
     private void onButtonPressed(String label) {
 
         if (errorState && !label.equals("C")) {
+            return;
+        }
+
+        if (label.equals("-") && enteringNewNumber && display.getText().equals("0")) {
+            display.setText("-");
+            enteringNewNumber = false;
             return;
         }
 
